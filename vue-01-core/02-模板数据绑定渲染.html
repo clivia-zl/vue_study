@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02-模板数据绑定渲染</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <h3>1.双大括号输出文本内容</h3>
+        <p>普通文本： {{ message }}</p>
+        <!-- {{ JS表达式 }} -->
+        <p>JS表达式： {{ number + 1 }}</p>
+
+        <!-- 一次性插值 -->
+        <h3>2.v-once 一次性插值</h3>
+        <p>这个值初始化之后不会改变：{{ number }}</p>
+
+        <h3>3.v-html 输出真正的HTML内容</h3>
+        <p>双大括号：{{ contentHtml }}</p>
+        <p>v-html指令：<span v-html="contentHtml"></span></p>
+
+        <h4>4.v-bind 元素绑定数据</h4>
+        <img v-bind:src="imgUrl" alt="">
+        <img :src="imgUrl" alt="">
+        <a :href="website">百度</a>
+        <a v-bind:href="website">百度</a>
+
+        <h3>5.v-on 元素绑定事件</h3>
+        <p>number: </p>
+        <input type="text" v-model="number">
+        <button v-on:click="addOne">点击+1</button>
+        <button @click="reduceOne">点击-1</button>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                message: "message",
+                number: 1,
+                contentHtml: `<span style="color: red;">红色字体内容
+                    <script>alert("hello, Vue")<\/script>
+                    </span>`,
+                imgUrl: 'https://cn.vuejs.org/images/logo.png',
+                website: 'https://www.baidu.com'
+            },
+            methods: {
+                addOne: function() {
+                    this.number++;
+                },
+                reduceOne: function() {
+                    this.number--;
+                }
+            },
+        });
+    </script>
+
+</body>
+</html>

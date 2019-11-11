@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01-helloworld</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        Hello, {{ msg }} <br>
+        <!-- v-model双向数据绑定 -->
+        <input type="text" v-model="msg">
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app", //Vue管理入口
+            data: { //初始化数据，app元素下可使用
+                msg: 'Vue.js'
+            }
+        });
+    </script>
+</body>
+
+</html>
